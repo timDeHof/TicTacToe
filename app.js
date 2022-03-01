@@ -2,6 +2,7 @@
 const gameState = {
   players: ["x", "o"],
   numberOfTurns: 0,
+  gameStatus: "playing",
   board: [
     [null, null, null],
     [null, null, null],
@@ -20,15 +21,12 @@ const gameState = {
   },
 };
 
-let player = {
-  name: "",
-  playerMark: "",
-  boardPositions: [['x', 'x', 'x']],
+// let player = {
+//   name: "",
+//   playerMark: "",
+//   boardPositions: [],
+// };
 
-
-
-
-};
 console.log({ gameState });
 //console.log({ gameState.winningCombinations });
 // * write functions to manipulate gameState
@@ -42,18 +40,25 @@ function createBoard() {
   console.log(gameState.board);
 }
 createBoard();
+
 function getNumberOfPlayers() {
+  let playersNumber = prompt("How many players? 1 or 2");
+  if (playersNumber === "2") {
+    // let player1 =  player();
+    // let player2 = new player();
+  }
   // prompts user to select number of players from selector
   // default: game will think player is playing against computer unless selector is moved to 2
   // if number of players is one then user
   // will play against computer otherwise
 }
+getNumberOfPlayers();
 function getUserName() {
   player.name = prompt("What's your name?");
   //prompts user to enter their names and stores it in the player object name
 }
-getUserName();
-console.log(player.name);
+//getUserName();
+//console.log(player.name);
 /* function displayPlayersUserName(){
      displays user's name under Player tag   
     } */
@@ -67,19 +72,24 @@ function playerTurn() {
 }
 
 /* function placeMarks(){
-        allows the player place a mark in an empty space on the board
+    allows the player place a mark in an empty space on the board
     } */
 
 /* function checksMarks(){
-        check if mark is occupied by a player or is empty space
-        if()
+    check if mark is occupied by a player or is empty space
     } */
-
+/* function getPlayersMarkPosition(){
+    gets the mark position of the player and returns it to the boardPositions property array
+} */
 /* function checkWinningMove(){
     checks if the current player has won after they placed a mark
 
     if(gameState.includes(player.boardPositions[])
     }*/
+/* function checkGame(){
+    check if player's borderPositions is included in the 
+} 
+ */
 
 /* function renderGame() {
         updates the game elements
@@ -92,12 +102,11 @@ function playerTurn() {
 // * Put Stuff of the screen
 
 // * Makes references to the one <div id="tic-tac-toe"></div> in the <body></body> tag
-const ticTacToe = document.querySelector(".ticTacToe");
+const ticTacToe = document.getElementById("tic-tac-toe");
 // * creates the play button on the board
-const button = document.createElement('button')
-button.classList.add('PLAY')
-ticTacToe.appendChild(button)
-
+const button = document.createElement("button");
+button.classList.add("PLAY");
+ticTacToe.appendChild(button);
 
 // * reference to our board
 
