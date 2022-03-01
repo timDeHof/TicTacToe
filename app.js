@@ -7,25 +7,26 @@ const gameState = {
     [null, null, null],
     [null, null, null],
   ],
-};
-let board = gameState.board;
-const winningCombinations = [
-  [board[0][0], board[0][1], board[0][2]], // across the top
-  [board[1][0], board[1][1], board[1][2]], // across the middle
-  [board[2][0], board[2][1], board[2][2]], // across the bottom
-  [board[0][0], board[1][0], board[2][0]], // down-left
-  [board[0][1], board[1][1], board[2][1]], // down-middle
-  [board[0][2], board[1][2], board[2][2]], // down-right
-  [board[0][0], board[1][1], board[2][2]],
-]; // diagonal across the board
+  winningCombinations: function(board){
+      [[board[0][0], board[0][1], board[0][2]], // across the top
+       [board[1][0], board[1][1], board[1][2]], // across the middle
+       [board[2][0], board[2][1], board[2][2]], // across the bottom
+       [board[0][0], board[1][0], board[2][0]], // down-left
+       [board[0][1], board[1][1], board[2][1]], // down-middle
+       [board[0][2], board[1][2], board[2][2]], // down-right
+       [board[0][0], board[1][1], board[2][2]]] // diagonal across the board
+  } 
 
+};
+// let board = gameState.board;
+ 
 let player = {
   name: "",
   playerMark: "",
   boardPositions: [],
 };
 console.log({ gameState });
-console.log({ winningCombinations });
+//console.log({ gameState.winningCombinations });
 // * write functions to manipulate gameState
 
 /* function getNumberOfPlayers(){
