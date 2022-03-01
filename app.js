@@ -1,10 +1,12 @@
+let numberOfPlayers = 1;
+
 // * Here is our game object
 const gameState = {
   players: ["x", "o"],
   numberOfPlayers: 1,
   numberOfTurns: 0,
-  player1: "user"
-  player2: "computer"
+  player1: "user",
+  player2: "computer",
   gameStatus: "playing",
   board: [
     [null, null, null],
@@ -44,17 +46,17 @@ function createBoard() {
 }
 createBoard();
 
-function getNumberOfPlayers() {
-  if (playersNumber === "2") {
+// function getNumberOfPlayers(event) {
+//   if (gameState.numberOfPlayers === 2) {
+//     player2 = "user";
+//   }
+// prompts user to select number of players from selector
+// default: game will think player is playing against computer unless selector is moved to 2
+// if number of players is one then user
+// will play against computer otherwise
+//}
+//getNumberOfPlayers();
 
-     player2 = "user" 
-  }
-  // prompts user to select number of players from selector
-  // default: game will think player is playing against computer unless selector is moved to 2
-  // if number of players is one then user
-  // will play against computer otherwise
-}
-getNumberOfPlayers();
 function getUserName() {
   //player.name = prompt("What's your name?");
   //prompts user to enter their names and stores it in the player object name
@@ -109,9 +111,18 @@ const ticTacToe = document.getElementById("tic-tac-toe");
 const playButton = document.createElement("button");
 playButton.classList.add("PLAY");
 ticTacToe.appendChild(playButton);
-playButton.innerText("PLAY");
+playButton.innerText = "PLAY";
 // * creates the reset button on the board
 
+// * selector
+const selectNumberOfPlayers = document.getElementsByTagName("select")[0];
+selectNumberOfPlayers.addEventListener(
+  "change",
+  function getNumberOfPlayers(event) {
+    numberOfPlayers = event.target.value;
+    console.log(numberOfPlayers);
+  }
+);
 // * reference to our board
 
 // * Make them work together
