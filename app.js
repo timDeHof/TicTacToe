@@ -1,7 +1,10 @@
 // * Here is our game object
 const gameState = {
   players: ["x", "o"],
+  numberOfPlayers: 1,
   numberOfTurns: 0,
+  player1: "user"
+  player2: "computer"
   gameStatus: "playing",
   board: [
     [null, null, null],
@@ -42,10 +45,9 @@ function createBoard() {
 createBoard();
 
 function getNumberOfPlayers() {
-  let playersNumber = prompt("How many players? 1 or 2");
   if (playersNumber === "2") {
-    // let player1 =  player();
-    // let player2 = new player();
+
+     player2 = "user" 
   }
   // prompts user to select number of players from selector
   // default: game will think player is playing against computer unless selector is moved to 2
@@ -54,7 +56,7 @@ function getNumberOfPlayers() {
 }
 getNumberOfPlayers();
 function getUserName() {
-  player.name = prompt("What's your name?");
+  //player.name = prompt("What's your name?");
   //prompts user to enter their names and stores it in the player object name
 }
 //getUserName();
@@ -104,9 +106,11 @@ function playerTurn() {
 // * Makes references to the one <div id="tic-tac-toe"></div> in the <body></body> tag
 const ticTacToe = document.getElementById("tic-tac-toe");
 // * creates the play button on the board
-const button = document.createElement("button");
-button.classList.add("PLAY");
-ticTacToe.appendChild(button);
+const playButton = document.createElement("button");
+playButton.classList.add("PLAY");
+ticTacToe.appendChild(playButton);
+playButton.innerText("PLAY");
+// * creates the reset button on the board
 
 // * reference to our board
 
