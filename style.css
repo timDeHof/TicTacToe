@@ -1,0 +1,19 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100rem;
+  height: 100rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#tic-tac-toe {
+  background-color: darkolivegreen;
+  border: solid 20px brown;
+  padding: 20px;
+  width: 360px;
+  height: 360px;
+  display: flex;
+  flex-wrap: wrap;
+}
