@@ -15,16 +15,19 @@ const gameState = {
       [board[0][0], board[1][0], board[2][0]], // down-left
       [board[0][1], board[1][1], board[2][1]], // down-middle
       [board[0][2], board[1][2], board[2][2]], // down-right
-      [board[0][0], board[1][1], board[2][2]],
-    ]; // diagonal across the board
+      [board[0][0], board[1][1], board[2][2]], // diagonal across the board
+    ];
   },
 };
-// let board = gameState.board;
 
 let player = {
   name: "",
   playerMark: "",
-  boardPositions: [],
+  boardPositions: [['x', 'x', 'x']],
+
+
+
+
 };
 console.log({ gameState });
 //console.log({ gameState.winningCombinations });
@@ -33,22 +36,24 @@ function createBoard() {
   // makes a 3 x 3 grid
   for (let i = 0; i <= 2; i++) {
     for (let k = 0; k <= 2; k++) {
-        console.log(gameState.board[i][k] = 'x')
+      gameState.board[i][k] = "x";
     }
   }
+  console.log(gameState.board);
 }
 createBoard();
-/* function getNumberOfPlayers(){
-    
-        prompts user to select number of players from selector
-        default: game will think player is playing against computer unless selector is moved to 2
-        if number of players is one then user
-        will play against computer otherwise 
-    } */
+function getNumberOfPlayers() {
+  // prompts user to select number of players from selector
+  // default: game will think player is playing against computer unless selector is moved to 2
+  // if number of players is one then user
+  // will play against computer otherwise
+}
 function getUserName() {
+  player.name = prompt("What's your name?");
   //prompts user to enter their names and stores it in the player object name
 }
-
+getUserName();
+console.log(player.name);
 /* function displayPlayersUserName(){
      displays user's name under Player tag   
     } */
@@ -67,10 +72,13 @@ function playerTurn() {
 
 /* function checksMarks(){
         check if mark is occupied by a player or is empty space
+        if()
     } */
 
 /* function checkWinningMove(){
     checks if the current player has won after they placed a mark
+
+    if(gameState.includes(player.boardPositions[])
     }*/
 
 /* function renderGame() {
@@ -84,12 +92,12 @@ function playerTurn() {
 // * Put Stuff of the screen
 
 // * Makes references to the one <div id="tic-tac-toe"></div> in the <body></body> tag
-//const ticTacToe = document.querySelector(".ticTacToe");
-// * creates the squares on the board
-// for (let i = 0; i <= 9; i++) {
-//   const square = document.createElement("div");
-//   ticTacToe.appendChild(square[i]);
-// }
+const ticTacToe = document.querySelector(".ticTacToe");
+// * creates the play button on the board
+const button = document.createElement('button')
+button.classList.add('PLAY')
+ticTacToe.appendChild(button)
+
 
 // * reference to our board
 
