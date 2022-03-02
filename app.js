@@ -31,34 +31,54 @@ const gameState = {
   winningCombinations: function (board) {
     //let currentPlayer = gameState.currentPlayer;
     // across the top
-    if (board[0][0] === "x" && board[0][1] === "x" && board[0][2] === "x") {
+    if (
+      board[0][0] === "user" &&
+      board[0][1] === "user" &&
+      board[0][2] === "user"
+    ) {
       gameStatus = "Finished";
       let winner = document.getElementById("winner");
-      winner.innerText = `X is the winner!`;
+      winner.innerText = `user is the winner!`;
     }
     // across the middle
-    if (board[1][0] === "x" && board[1][1] === "x" && board[1][2] === "x") {
+    if (
+      board[1][0] === "user" &&
+      board[1][1] === "user" &&
+      board[1][2] === "user"
+    ) {
       gameStatus = "Finished";
       let winner = document.getElementById("winner");
-      winner.innerText = "X is the winner!";
+      winner.innerText = "user is the winner!";
     }
     // across the bottom
-    if (board[2][0] === "x" && board[2][1] === "x" && board[2][2] === "x") {
+    if (
+      board[2][0] === "user" &&
+      board[2][1] === "user" &&
+      board[2][2] === "user"
+    ) {
       gameStatus = "Finished";
       let winner = document.getElementById("winner");
-      winner.innerText = "X is the winner!";
+      winner.innerText = "user is the winner!";
     }
     // Going down the left side
-    if (board[0][0] === "x" && board[1][0] === "x" && board[2][0] === "x") {
+    if (
+      board[0][0] === "user" &&
+      board[1][0] === "user" &&
+      board[2][0] === "user"
+    ) {
       gameStatus = "Finished";
       let winner = document.getElementById("winner");
-      winner.innerText = "X is the winner!";
+      winner.innerText = "user is the winner!";
     }
     // Going down the middle
-    if (board[0][1] === "x" && board[1][1] === "x" && board[2][1] === "x") {
+    if (
+      board[0][1] === "user" &&
+      board[1][1] === "user" &&
+      board[2][1] === "user"
+    ) {
       gameStatus = "Finished";
       let winner = document.getElementById("winner");
-      winner.innerText = "X is the winner!";
+      winner.innerText = "user is the winner!";
     }
     // [
     //   [board[0][0], board[0][1], board[0][2]], // across the top
@@ -80,16 +100,6 @@ const gameState = {
 //console.log({ gameState });
 //console.log({ gameState.winningCombinations });
 // * write functions to manipulate gameState
-// function createBoard() {
-//   // makes a 3 x 3 grid
-//   for (let i = 0; i <= 2; i++) {
-//     for (let k = 0; k <= 2; k++) {
-//       //gameState.board[i][k] = "x";
-//     }
-//   }
-//   console.log(gameState.board);
-//}
-//createBoard();
 
 // function getNumberOfPlayers(event) {
 //   if (gameState.numberOfPlayers === 2) {
@@ -100,8 +110,6 @@ const gameState = {
 // if number of players is one then user
 // will play against computer otherwise
 //}
-//getNumberOfPlayers();
-
 // function getUserName() {
 //   //player.name = prompt("What's your name?");
 //   //prompts user to enter their names and stores it in the player object name
@@ -182,8 +190,7 @@ ticTacToe.addEventListener("click", function (event) {
   console.log(event.target.id);
   let row = event.target.id[0];
   let col = event.target.id[1];
-  let currentMove = gameState.move(gameState.currentPlayer, row, col);
-  console.log(currentMove);
+  gameState.move(gameState.currentPlayer, row, col);
   renderBoard();
   console.log(gameState.currentPlayer);
   if (gameState.currentPlayer === gameState.player1) {
@@ -209,6 +216,7 @@ function renderBoard() {
 // * checks if move was valid or not
 function checkMoveValidation() {}
 function checkBoard() {
+  // checks if board has a winner
   gameState.winningCombinations(gameState.board);
 }
 // * reference to our board
