@@ -1,19 +1,43 @@
 body {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
-  width: 100rem;
-  height: 100rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 #tic-tac-toe {
   background-color: darkolivegreen;
-  border: solid 20px brown;
-  padding: 20px;
+  border: solid 10px brown;
+  border-radius: 10%;
+  padding: 10px;
   width: 360px;
   height: 360px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, auto);
+  row-gap: 0px;
+  column-gap: 0px;
+  justify-items: center;
+  align-items: center;
+}
+select{
+    width:50px
+}
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: darkolivegreen;
+}
+
+.cell:nth-child(3n + 2) {
+  border-left: 3px solid white;
+  border-right: 3px solid white;
+}
+
+.cell:nth-child(n+4) {
+    border-top: 3px solid white;
+    
 }

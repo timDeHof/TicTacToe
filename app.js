@@ -14,6 +14,36 @@ const gameState = {
     [null, null, null],
   ],
   winningCombinations: function (board) {
+    // across the top
+    if (board[0][0] === "x" && board[0][1] === "x" && board[0][2] === "x") {
+      gameStatus = "Finished";
+      let winner = document.getElementById("winner");
+      winner.innerText = "X is the winner!";
+    }
+    // across the middle
+    if (board[1][0] === "x" && board[1][1] === "x" && board[1][2] === "x") {
+      gameStatus = "Finished";
+      let winner = document.getElementById("winner");
+      winner.innerText = "X is the winner!";
+    }
+    // across the bottom
+    if (board[2][0] === "x" && board[2][1] === "x" && board[2][2] === "x") {
+      gameStatus = "Finished";
+      let winner = document.getElementById("winner");
+      winner.innerText = "X is the winner!";
+    }
+    // Going down the left side
+    if (board[0][0] === "x" && board[1][0] === "x" && board[2][0] === "x") {
+        gameStatus = "Finished";
+        let winner = document.getElementById("winner");
+        winner.innerText = "X is the winner!";
+      }
+    // Going down the middle
+    if (board[0][1] === "x" && board[1][1] === "x" && board[2][1] === "x") {
+        gameStatus = "Finished";
+        let winner = document.getElementById("winner");
+        winner.innerText = "X is the winner!";
+      }
     [
       [board[0][0], board[0][1], board[0][2]], // across the top
       [board[1][0], board[1][1], board[1][2]], // across the middle
@@ -39,7 +69,7 @@ function createBoard() {
   // makes a 3 x 3 grid
   for (let i = 0; i <= 2; i++) {
     for (let k = 0; k <= 2; k++) {
-      gameState.board[i][k] = "x";
+      //gameState.board[i][k] = "x";
     }
   }
   console.log(gameState.board);
@@ -94,7 +124,11 @@ function playerTurn() {
     check if player's borderPositions is included in the 
 } 
  */
-
+// gameState.winningCombinations([ Test top row function in gameState object
+//   ["x", "x", "x"],
+//   [null, null, null],
+//   [null, null, null],
+// ]);
 /* function renderGame() {
         updates the game elements
     } */
