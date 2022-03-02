@@ -1,5 +1,3 @@
-//et numberOfPlayers = 1;
-
 // * Here is our game object
 const gameState = {
   players: ["x", "o"],
@@ -184,17 +182,21 @@ ticTacToe.addEventListener("click", function (event) {
   console.log(event.target.id);
   let row = event.target.id[0];
   let col = event.target.id[1];
-  gameState.move(gameState.currentPlayer, row, col);
+  let currentMove = gameState.move(gameState.currentPlayer, row, col);
+  console.log(currentMove);
   renderBoard();
+  console.log(gameState.currentPlayer);
   if (gameState.currentPlayer === gameState.player1) {
+    // would like to check if cell is empty before moving to next player
+    checkMoveValidation();
     gameState.currentPlayer = gameState.player2;
-    gameState.winningCombinations(gameState.board);
+    checkBoard();
   } else if (gameState.currentPlayer === gameState.player2) {
     gameState.currentPlayer = gameState.player1;
-    gameState.winningCombinations(gameState.board);
+    checkBoard();
   }
 });
-
+// * updates board with with playerPosition indexes
 function renderBoard() {
   for (let i = 0; i < gameState.board.length; i++) {
     for (let k = 0; k < gameState.board[i].length; k++) {
@@ -204,8 +206,10 @@ function renderBoard() {
     }
   }
 }
+// * checks if move was valid or not
+function checkMoveValidation() {}
 function checkBoard() {
-  gameState.winningCombinations(board);
+  gameState.winningCombinations(gameState.board);
 }
 // * reference to our board
 
