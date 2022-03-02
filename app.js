@@ -36,7 +36,7 @@ const gameState = {
       board[0][1] === "user" &&
       board[0][2] === "user"
     ) {
-      gameStatus = "Finished";
+      this.gameStatus = "Finished";
       let winner = document.getElementById("winner");
       winner.innerText = `user is the winner!`;
     }
@@ -46,7 +46,7 @@ const gameState = {
       board[1][1] === "user" &&
       board[1][2] === "user"
     ) {
-      gameStatus = "Finished";
+      this.gameStatus = "Finished";
       let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
@@ -56,7 +56,7 @@ const gameState = {
       board[2][1] === "user" &&
       board[2][2] === "user"
     ) {
-      gameStatus = "Finished";
+      this.gameStatus = "Finished";
       let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
@@ -66,7 +66,7 @@ const gameState = {
       board[1][0] === "user" &&
       board[2][0] === "user"
     ) {
-      gameStatus = "Finished";
+      this.gameStatus = "Finished";
       let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
@@ -76,7 +76,7 @@ const gameState = {
       board[1][1] === "user" &&
       board[2][1] === "user"
     ) {
-      gameStatus = "Finished";
+      this.gameStatus = "Finished";
       let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
@@ -86,7 +86,7 @@ const gameState = {
       board[1][2] === "user" &&
       board[2][2] === "user"
     ) {
-      gameStatus = "Finished";
+      this.gameStatus = "Finished";
       let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
@@ -96,7 +96,7 @@ const gameState = {
       board[1][1] === "user" &&
       board[2][2] === "user"
     ) {
-      gameStatus = "Finished";
+      this.gameStatus = "Finished";
       let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
@@ -208,6 +208,7 @@ selectNumberOfPlayers.addEventListener(
 // * Make cell change from null to "x" or "o"
 ticTacToe.addEventListener("click", function (event) {
   console.log(event.target.id);
+
   let row = event.target.id[0];
   let col = event.target.id[1];
   gameState.move(gameState.currentPlayer, row, col);
