@@ -103,10 +103,10 @@ createBoard();
 //}
 //getNumberOfPlayers();
 
-function getUserName() {
-  //player.name = prompt("What's your name?");
-  //prompts user to enter their names and stores it in the player object name
-}
+// function getUserName() {
+//   //player.name = prompt("What's your name?");
+//   //prompts user to enter their names and stores it in the player object name
+// }
 //getUserName();
 //console.log(player.name);
 /* function displayPlayersUserName(){
@@ -117,9 +117,9 @@ function getUserName() {
         game will always select player who is X's
     } */
 
-function playerTurn() {
-  // Players take turns placing their marks in an empty space
-}
+// function playerTurn() {
+//    Players take turns placing their marks in an empty space
+// }
 
 /* function placeMarks(){
     allows the player place a mark in an empty space on the board
