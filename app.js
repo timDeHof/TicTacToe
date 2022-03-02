@@ -80,6 +80,26 @@ const gameState = {
       let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
+    // Going down the right
+    if (
+      board[0][2] === "user" &&
+      board[1][2] === "user" &&
+      board[2][2] === "user"
+    ) {
+      gameStatus = "Finished";
+      let winner = document.getElementById("winner");
+      winner.innerText = "user is the winner!";
+    }
+    // diagonal across the board
+    if (
+      board[0][0] === "user" &&
+      board[1][1] === "user" &&
+      board[2][2] === "user"
+    ) {
+      gameStatus = "Finished";
+      let winner = document.getElementById("winner");
+      winner.innerText = "user is the winner!";
+    }
     // [
     //   [board[0][0], board[0][1], board[0][2]], // across the top
     //   [board[1][0], board[1][1], board[1][2]], // across the middle
@@ -218,6 +238,7 @@ function checkMoveValidation() {}
 function checkBoard() {
   // checks if board has a winner
   gameState.winningCombinations(gameState.board);
+  console.log({ gameState });
 }
 // * reference to our board
 
