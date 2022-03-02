@@ -184,12 +184,14 @@ selectNumberOfPlayers.addEventListener(
     console.log(numberOfPlayers);
   }
 );
+
 // * Make cell change from null to "x" or "o"
 for (let i = 0; i < gameState.board.length; i++) {
   for (let k = 0; k < gameState.board[i].length; k++) {
     const cell = document.getElementsByClassName("cell")[i];
     cell.addEventListener("click", function (event) {
       console.log("I'm a cell!");
+      cell.innerText = "x"
     });
   }
 }
