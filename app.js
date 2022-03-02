@@ -34,25 +34,25 @@ const gameState = {
     }
     // Going down the left side
     if (board[0][0] === "x" && board[1][0] === "x" && board[2][0] === "x") {
-        gameStatus = "Finished";
-        let winner = document.getElementById("winner");
-        winner.innerText = "X is the winner!";
-      }
+      gameStatus = "Finished";
+      let winner = document.getElementById("winner");
+      winner.innerText = "X is the winner!";
+    }
     // Going down the middle
     if (board[0][1] === "x" && board[1][1] === "x" && board[2][1] === "x") {
-        gameStatus = "Finished";
-        let winner = document.getElementById("winner");
-        winner.innerText = "X is the winner!";
-      }
-    [
-      [board[0][0], board[0][1], board[0][2]], // across the top
-      [board[1][0], board[1][1], board[1][2]], // across the middle
-      [board[2][0], board[2][1], board[2][2]], // across the bottom
-      [board[0][0], board[1][0], board[2][0]], // down-left
-      [board[0][1], board[1][1], board[2][1]], // down-middle
-      [board[0][2], board[1][2], board[2][2]], // down-right
-      [board[0][0], board[1][1], board[2][2]], // diagonal across the board
-    ];
+      gameStatus = "Finished";
+      let winner = document.getElementById("winner");
+      winner.innerText = "X is the winner!";
+    }
+    // [
+    //   [board[0][0], board[0][1], board[0][2]], // across the top
+    //   [board[1][0], board[1][1], board[1][2]], // across the middle
+    //   [board[2][0], board[2][1], board[2][2]], // across the bottom
+    //   [board[0][0], board[1][0], board[2][0]], // down-left
+    //   [board[0][1], board[1][1], board[2][1]], // down-middle
+    //   [board[0][2], board[1][2], board[2][2]], // down-right
+    //   [board[0][0], board[1][1], board[2][2]], // diagonal across the board
+    // ];
   },
 };
 
@@ -133,9 +133,17 @@ function playerTurn() {
         updates the game elements
     } */
 
-/* function resetGame() {
-        resets the board for a new game
-    } */
+function resetGame() {
+  //resets the board for a new game
+  gameState = {
+    board: [
+        [null, null, null],
+        [null, null, null],
+        [null, null, null],
+      ]
+    gameStatus: 'playing'
+  }
+}
 
 // * Put Stuff of the screen
 
@@ -147,7 +155,10 @@ playButton.classList.add("PLAY");
 ticTacToe.appendChild(playButton);
 playButton.innerText = "PLAY";
 // * creates the reset button on the board
-
+const resetButton = document.createElement("button");
+resetButton.classList.add("RESET");
+ticTacToe.appendChild(resetButton);
+resetButton.innerText = "RESET";
 // * selector
 const selectNumberOfPlayers = document.getElementsByTagName("select")[0];
 selectNumberOfPlayers.addEventListener(
@@ -160,3 +171,12 @@ selectNumberOfPlayers.addEventListener(
 // * reference to our board
 
 // * Make them work together
+// * Listen to clicks to our play button
+playButton.addEventListener('click'), function(){
+    
+}
+
+// * Listen to clicks on our reset button
+resetButton.addEventListener('click', function(){
+    resetGame()
+})
