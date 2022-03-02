@@ -23,8 +23,13 @@ body {
   justify-items: center;
   align-items: center;
 }
-select{
-    width:50px
+select {
+  width: 50px;
+}
+
+h4 {
+  font-size: large;
+  visibility: hidden;
 }
 .cell {
   width: 100px;
@@ -37,7 +42,6 @@ select{
   border-right: 3px solid white;
 }
 
-.cell:nth-child(n+4) {
-    border-top: 3px solid white;
-    
+.cell:nth-child(n + 4) {
+  border-top: 3px solid white;
 }

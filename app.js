@@ -90,11 +90,21 @@ const gameState = {
       let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
-    // diagonal across the board
+    // diagonal across the board - top-left to bottom-right
     if (
       board[0][0] === "user" &&
       board[1][1] === "user" &&
       board[2][2] === "user"
+    ) {
+      this.gameStatus = "Finished";
+      let winner = document.getElementById("winner");
+      winner.innerText = "user is the winner!";
+    }
+    // digonal across the board - top-right to bottom-left
+    if (
+      board[0][2] === "user" &&
+      board[1][1] === "user" &&
+      board[2][0] === "user"
     ) {
       this.gameStatus = "Finished";
       let winner = document.getElementById("winner");
@@ -209,6 +219,8 @@ selectNumberOfPlayers.addEventListener(
 ticTacToe.addEventListener("click", function (event) {
   //console.log(event.target.id);
   if (event.target.className !== "cell") {
+    let warning = document.getElementById("warning");
+    warning.setAttribute.visibility = "visible";
     return;
   }
   let row = event.target.id[0];
