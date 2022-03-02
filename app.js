@@ -137,12 +137,12 @@ function resetGame() {
   //resets the board for a new game
   gameState = {
     board: [
-        [null, null, null],
-        [null, null, null],
-        [null, null, null],
-      ]
-    gameStatus: 'playing'
-  }
+      [null, null, null],
+      [null, null, null],
+      [null, null, null],
+    ],
+    gameStatus: "playing",
+  };
 }
 
 // * Put Stuff of the screen
@@ -172,11 +172,13 @@ selectNumberOfPlayers.addEventListener(
 
 // * Make them work together
 // * Listen to clicks to our play button
-playButton.addEventListener('click'), function(){
-    
-}
+// playButton.addEventListener("click"),
+//   function () {
+//     console.log("Play Me!");
+//   };
 
 // * Listen to clicks on our reset button
-resetButton.addEventListener('click', function(){
-    resetGame()
-})
+resetButton.addEventListener("click", function () {
+  console.log("Reset me!");
+  //resetGame();
+});
