@@ -31,11 +31,12 @@ const gameState = {
     ];
   },
   winningCombinations: function (board) {
+    //let currentPlayer = gameState.currentPlayer;
     // across the top
     if (board[0][0] === "x" && board[0][1] === "x" && board[0][2] === "x") {
       gameStatus = "Finished";
       let winner = document.getElementById("winner");
-      winner.innerText = "X is the winner!";
+      winner.innerText = `X is the winner!`;
     }
     // across the middle
     if (board[1][0] === "x" && board[1][1] === "x" && board[1][2] === "x") {
@@ -78,19 +79,19 @@ const gameState = {
 // 2. the first player goes first
 // 3. the second player goes second
 // 4. keep alternating moves until one of the players has drawn a row of three symbols or until no one can win
-console.log({ gameState });
+//console.log({ gameState });
 //console.log({ gameState.winningCombinations });
 // * write functions to manipulate gameState
-function createBoard() {
-  // makes a 3 x 3 grid
-  for (let i = 0; i <= 2; i++) {
-    for (let k = 0; k <= 2; k++) {
-      //gameState.board[i][k] = "x";
-    }
-  }
-  console.log(gameState.board);
-}
-createBoard();
+// function createBoard() {
+//   // makes a 3 x 3 grid
+//   for (let i = 0; i <= 2; i++) {
+//     for (let k = 0; k <= 2; k++) {
+//       //gameState.board[i][k] = "x";
+//     }
+//   }
+//   console.log(gameState.board);
+//}
+//createBoard();
 
 // function getNumberOfPlayers(event) {
 //   if (gameState.numberOfPlayers === 2) {
@@ -131,11 +132,7 @@ createBoard();
 /* function getPlayersMarkPosition(){
     gets the mark position of the player and returns it to the boardPositions property array
 } */
-/* function checkWinningMove(){
-    checks if the current player has won after they placed a mark
 
-    if(gameState.includes(player.boardPositions[])
-    }*/
 /* function checkGame(){
     check if player's borderPositions is included in the 
 } 
@@ -145,9 +142,6 @@ createBoard();
 //   [null, null, null],
 //   [null, null, null],
 // ]);
-/* function renderGame() {
-        updates the game elements
-    } */
 
 function resetGame() {
   //resets the board for a new game
@@ -186,14 +180,32 @@ selectNumberOfPlayers.addEventListener(
 );
 
 // * Make cell change from null to "x" or "o"
-for (let i = 0; i < gameState.board.length; i++) {
-  for (let k = 0; k < gameState.board[i].length; k++) {
-    const cell = document.getElementsByClassName("cell")[i];
-    cell.addEventListener("click", function (event) {
-      console.log("I'm a cell!");
-      cell.innerText = "x"
-    });
+ticTacToe.addEventListener("click", function (event) {
+  console.log(event.target.id);
+  let row = event.target.id[0];
+  let col = event.target.id[1];
+  gameState.move(gameState.currentPlayer, row, col);
+  renderBoard();
+  if (gameState.currentPlayer === gameState.player1) {
+    gameState.currentPlayer = gameState.player2;
+    gameState.winningCombinations(gameState.board);
+  } else if (gameState.currentPlayer === gameState.player2) {
+    gameState.currentPlayer = gameState.player1;
+    gameState.winningCombinations(gameState.board);
   }
+});
+
+function renderBoard() {
+  for (let i = 0; i < gameState.board.length; i++) {
+    for (let k = 0; k < gameState.board[i].length; k++) {
+      let currentEl = gameState.board[i][k];
+      let currentCell = document.getElementById(`${i}${k}`);
+      currentCell.innerText = currentEl;
+    }
+  }
+}
+function checkBoard() {
+  gameState.winningCombinations(board);
 }
 // * reference to our board
 
