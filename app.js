@@ -207,8 +207,10 @@ selectNumberOfPlayers.addEventListener(
 
 // * Make cell change from null to "x" or "o"
 ticTacToe.addEventListener("click", function (event) {
-  console.log(event.target.id);
-
+  //console.log(event.target.id);
+  if (event.target.className !== "cell") {
+    return;
+  }
   let row = event.target.id[0];
   let col = event.target.id[1];
   gameState.move(gameState.currentPlayer, row, col);
