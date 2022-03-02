@@ -185,13 +185,14 @@ selectNumberOfPlayers.addEventListener(
   }
 );
 // * Make cell change from null to "x" or "o"
-const cell = document.getElementsByClassName("cell")[0];
-if (cell.length >= 9) {
-  cell.addEventListener("click", function () {
-    console.log("I'm a cell!");
-  });
+for (let i = 0; i < gameState.board.length; i++) {
+  for (let k = 0; k < gameState.board[i].length; k++) {
+    const cell = document.getElementsByClassName("cell")[i];
+    cell.addEventListener("click", function (event) {
+      console.log("I'm a cell!");
+    });
+  }
 }
-
 // * reference to our board
 
 // * Make them work together
