@@ -27,6 +27,7 @@ const gameState = {
       [null, null, null],
       [null, null, null],
     ];
+    this.gameStatus = "playing";
   },
   winningCombinations: function (board) {
     //let currentPlayer = gameState.currentPlayer;
@@ -181,14 +182,16 @@ const gameState = {
 
 function resetGame() {
   //resets the board for a new game
-  gameState = {
-    board: [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null],
-    ],
-    gameStatus: "playing",
-  };
+  // gameState = {
+  //   board: [
+  //     [null, null, null],
+  //     [null, null, null],
+  //     [null, null, null],
+  //   ],
+  gameState.clear(gameState);
+  renderBoard();
+
+  console.log({ gameState });
 }
 
 // * Put Stuff of the screen
@@ -201,7 +204,7 @@ playButton.classList.add("PLAY");
 ticTacToe.appendChild(playButton);
 playButton.innerText = "PLAY";
 // * creates the reset button on the board
-const resetButton = document.createElement("button");
+let resetButton = document.createElement("button");
 resetButton.classList.add("RESET");
 ticTacToe.appendChild(resetButton);
 resetButton.innerText = "RESET";
@@ -267,5 +270,5 @@ function checkBoard() {
 // * Listen to clicks on our reset button
 resetButton.addEventListener("click", function () {
   console.log("Reset me!");
-  //resetGame();
+  resetGame();
 });
