@@ -1,4 +1,4 @@
-let numberOfPlayers = 1;
+//et numberOfPlayers = 1;
 
 // * Here is our game object
 const gameState = {
@@ -7,12 +7,29 @@ const gameState = {
   numberOfTurns: 0,
   player1: "user",
   player2: "computer",
+  currentPlayer: "user",
   gameStatus: "playing",
   board: [
     [null, null, null],
     [null, null, null],
     [null, null, null],
   ],
+
+  move: function (player, rowNum, colNum) {
+    if (!this.board[rowNum][colNum]) {
+      this.board[rowNum][colNum] = player;
+    }
+    console.log(this.board);
+    return this.board;
+  },
+
+  clear: function () {
+    this.board = [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null],
+    ];
+  },
   winningCombinations: function (board) {
     // across the top
     if (board[0][0] === "x" && board[0][1] === "x" && board[0][2] === "x") {
@@ -56,12 +73,11 @@ const gameState = {
   },
 };
 
-// let player = {
-//   name: "",
-//   playerMark: "",
-//   boardPositions: [],
-// };
-
+// * How to play the game(tic-tac-toe)
+// 1. Draw a board
+// 2. the first player goes first
+// 3. the second player goes second
+// 4. keep alternating moves until one of the players has drawn a row of three symbols or until no one can win
 console.log({ gameState });
 //console.log({ gameState.winningCombinations });
 // * write functions to manipulate gameState
@@ -168,6 +184,14 @@ selectNumberOfPlayers.addEventListener(
     console.log(numberOfPlayers);
   }
 );
+// * Make cell change from null to "x" or "o"
+const cell = document.getElementsByClassName("cell")[0];
+if (cell.length >= 9) {
+  cell.addEventListener("click", function () {
+    console.log("I'm a cell!");
+  });
+}
+
 // * reference to our board
 
 // * Make them work together
@@ -175,7 +199,7 @@ selectNumberOfPlayers.addEventListener(
 // playButton.addEventListener("click"),
 //   function () {
 //     console.log("Play Me!");
-//   };
+//   }; showing type error in dev tool
 
 // * Listen to clicks on our reset button
 resetButton.addEventListener("click", function () {
