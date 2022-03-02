@@ -1,3 +1,9 @@
+// * How to play the game(tic-tac-toe)
+// 1. Draw a board
+// 2. the first player goes first
+// 3. the second player goes second
+// 4. keep alternating moves until one of the players has drawn a row of three symbols or until no one can win
+
 // * Here is our game object
 const gameState = {
   players: ["x", "o"],
@@ -28,9 +34,12 @@ const gameState = {
       [null, null, null],
     ];
     this.gameStatus = "playing";
+    this.currentPlayer = "user";
   },
+
   winningCombinations: function (board) {
-    //let currentPlayer = gameState.currentPlayer;
+    let winner = document.getElementById("winner");
+
     // across the top
     if (
       board[0][0] === "user" &&
@@ -38,9 +47,9 @@ const gameState = {
       board[0][2] === "user"
     ) {
       this.gameStatus = "Finished";
-      let winner = document.getElementById("winner");
       winner.innerText = `user is the winner!`;
     }
+
     // across the middle
     if (
       board[1][0] === "user" &&
@@ -48,9 +57,9 @@ const gameState = {
       board[1][2] === "user"
     ) {
       this.gameStatus = "Finished";
-      let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
+
     // across the bottom
     if (
       board[2][0] === "user" &&
@@ -58,9 +67,9 @@ const gameState = {
       board[2][2] === "user"
     ) {
       this.gameStatus = "Finished";
-      let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
+
     // Going down the left side
     if (
       board[0][0] === "user" &&
@@ -68,9 +77,9 @@ const gameState = {
       board[2][0] === "user"
     ) {
       this.gameStatus = "Finished";
-      let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
+
     // Going down the middle
     if (
       board[0][1] === "user" &&
@@ -78,9 +87,9 @@ const gameState = {
       board[2][1] === "user"
     ) {
       this.gameStatus = "Finished";
-      let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
+
     // Going down the right
     if (
       board[0][2] === "user" &&
@@ -88,9 +97,9 @@ const gameState = {
       board[2][2] === "user"
     ) {
       this.gameStatus = "Finished";
-      let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
+
     // diagonal across the board - top-left to bottom-right
     if (
       board[0][0] === "user" &&
@@ -98,38 +107,21 @@ const gameState = {
       board[2][2] === "user"
     ) {
       this.gameStatus = "Finished";
-      let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
-    // digonal across the board - top-right to bottom-left
+
+    // diagonal across the board - top-right to bottom-left
     if (
       board[0][2] === "user" &&
       board[1][1] === "user" &&
       board[2][0] === "user"
     ) {
       this.gameStatus = "Finished";
-      let winner = document.getElementById("winner");
       winner.innerText = "user is the winner!";
     }
-    // [
-    //   [board[0][0], board[0][1], board[0][2]], // across the top
-    //   [board[1][0], board[1][1], board[1][2]], // across the middle
-    //   [board[2][0], board[2][1], board[2][2]], // across the bottom
-    //   [board[0][0], board[1][0], board[2][0]], // down-left
-    //   [board[0][1], board[1][1], board[2][1]], // down-middle
-    //   [board[0][2], board[1][2], board[2][2]], // down-right
-    //   [board[0][0], board[1][1], board[2][2]], // diagonal across the board
-    // ];
   },
 };
 
-// * How to play the game(tic-tac-toe)
-// 1. Draw a board
-// 2. the first player goes first
-// 3. the second player goes second
-// 4. keep alternating moves until one of the players has drawn a row of three symbols or until no one can win
-//console.log({ gameState });
-//console.log({ gameState.winningCombinations });
 // * write functions to manipulate gameState
 
 // function getNumberOfPlayers(event) {
@@ -151,10 +143,6 @@ const gameState = {
      displays user's name under Player tag   
     } */
 
-/* function chooseWhoFirst(){
-        game will always select player who is X's
-    } */
-
 // function playerTurn() {
 //    Players take turns placing their marks in an empty space
 // }
@@ -170,27 +158,9 @@ const gameState = {
     gets the mark position of the player and returns it to the boardPositions property array
 } */
 
-/* function checkGame(){
-    check if player's borderPositions is included in the 
-} 
- */
-// gameState.winningCombinations([ Test top row function in gameState object
-//   ["x", "x", "x"],
-//   [null, null, null],
-//   [null, null, null],
-// ]);
-
 function resetGame() {
-  //resets the board for a new game
-  // gameState = {
-  //   board: [
-  //     [null, null, null],
-  //     [null, null, null],
-  //     [null, null, null],
-  //   ],
   gameState.clear(gameState);
   renderBoard();
-
   console.log({ gameState });
 }
 
@@ -198,16 +168,19 @@ function resetGame() {
 
 // * Makes references to the one <div id="tic-tac-toe"></div> in the <body></body> tag
 const ticTacToe = document.getElementById("tic-tac-toe");
+
 // * creates the play button on the board
 const playButton = document.createElement("button");
 playButton.classList.add("PLAY");
 ticTacToe.appendChild(playButton);
 playButton.innerText = "PLAY";
+
 // * creates the reset button on the board
 let resetButton = document.createElement("button");
 resetButton.classList.add("RESET");
 ticTacToe.appendChild(resetButton);
 resetButton.innerText = "RESET";
+
 // * selector
 const selectNumberOfPlayers = document.getElementsByTagName("select")[0];
 selectNumberOfPlayers.addEventListener(
@@ -220,7 +193,6 @@ selectNumberOfPlayers.addEventListener(
 
 // * Make cell change from null to "x" or "o"
 ticTacToe.addEventListener("click", function (event) {
-  //console.log(event.target.id);
   if (event.target.className !== "cell") {
     let warning = document.getElementById("warning");
     warning.setAttribute.visibility = "visible";
@@ -241,6 +213,7 @@ ticTacToe.addEventListener("click", function (event) {
     checkBoard();
   }
 });
+
 // * updates board with with playerPosition indexes
 function renderBoard() {
   for (let i = 0; i < gameState.board.length; i++) {
@@ -251,6 +224,7 @@ function renderBoard() {
     }
   }
 }
+
 // * checks if move was valid or not
 function checkMoveValidation() {}
 function checkBoard() {
