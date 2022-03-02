@@ -28,6 +28,7 @@ const gameState = {
   },
 
   clear: function () {
+    let winner = document.getElementById("winner");
     this.board = [
       [null, null, null],
       [null, null, null],
@@ -35,6 +36,7 @@ const gameState = {
     ];
     this.gameStatus = "playing";
     this.currentPlayer = "user";
+    winner.innerText = "";
   },
 
   winningCombinations: function (board) {
@@ -194,23 +196,24 @@ selectNumberOfPlayers.addEventListener(
 // * Make cell change from null to "x" or "o"
 ticTacToe.addEventListener("click", function (event) {
   if (event.target.className !== "cell") {
-    let warning = document.getElementById("warning");
-    warning.setAttribute.visibility = "visible";
+    // document.getElementById(".warning").style.visibility = "visible";
     return;
-  }
-  let row = event.target.id[0];
-  let col = event.target.id[1];
-  gameState.move(gameState.currentPlayer, row, col);
-  renderBoard();
-  console.log(gameState.currentPlayer);
-  if (gameState.currentPlayer === gameState.player1) {
-    // would like to check if cell is empty before moving to next player
-    checkMoveValidation();
-    gameState.currentPlayer = gameState.player2;
-    checkBoard();
-  } else if (gameState.currentPlayer === gameState.player2) {
-    gameState.currentPlayer = gameState.player1;
-    checkBoard();
+  } else {
+    // document.getElementById(".warning").style.visibility = "hidden";
+    let row = event.target.id[0];
+    let col = event.target.id[1];
+    gameState.move(gameState.currentPlayer, row, col);
+    renderBoard();
+    console.log(gameState.currentPlayer);
+    if (gameState.currentPlayer === gameState.player1) {
+      // would like to check if cell is empty before moving to next player
+      checkMoveValidation();
+      gameState.currentPlayer = gameState.player2;
+      checkBoard();
+    } else if (gameState.currentPlayer === gameState.player2) {
+      gameState.currentPlayer = gameState.player1;
+      checkBoard();
+    }
   }
 });
 
