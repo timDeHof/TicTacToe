@@ -11,13 +11,16 @@
   <body>
     <h1>TIC TAC TOE</h1>
     <h2 id="winner"></h2>
+
     <h3>How many players</h3>
     <select>
       <option value="1">1</option>
       <option value="2">2</option>
     </select>
+    <input type="text" placeholder="Type" id="inputPlayer1Id" />
+    <button type="button" onclick="getPlayer1NameValue();">PLAYER 1</button>
     <h4 id="warning">Warning: Please click an empty square on the board!</h4>
-
+    <h3 id="player1"></h3>
     <div id="tic-tac-toe">
       <div class="cell" id="00"></div>
       <div class="cell" id="01"></div>

@@ -126,15 +126,6 @@ const gameState = {
 
 // * write functions to manipulate gameState
 
-// function getNumberOfPlayers(event) {
-//   if (gameState.numberOfPlayers === 2) {
-//     player2 = "user";
-//   }
-// prompts user to select number of players from selector
-// default: game will think player is playing against computer unless selector is moved to 2
-// if number of players is one then user
-// will play against computer otherwise
-//}
 // function getUserName() {
 //   //player.name = prompt("What's your name?");
 //   //prompts user to enter their names and stores it in the player object name
@@ -184,6 +175,11 @@ ticTacToe.appendChild(resetButton);
 resetButton.innerText = "RESET";
 
 // * selector
+// users to select a number of players from selector
+// default: game will think player is playing against computer unless selector is moved to 2
+// if number of players is one then user
+// will play against computer otherwise
+
 const selectNumberOfPlayers = document.getElementsByTagName("select")[0];
 selectNumberOfPlayers.addEventListener(
   "change",
@@ -192,7 +188,18 @@ selectNumberOfPlayers.addEventListener(
     console.log(numberOfPlayers);
   }
 );
+// * Getting player 1 name
+function getPlayer1NameValue() {
+  // Selecting the input element and get its value
+  let inputVal = document.getElementById("inputPlayer1Id").value;
+  // Displaying the value
+  displayPlayer1Name(inputVal);
+}
 
+function displayPlayer1Name(name) {
+  let player1 = document.getElementById("player1");
+  player1.innerText = `Player 1: ${name}`;
+}
 // * Make cell change from null to "x" or "o"
 ticTacToe.addEventListener("click", function (event) {
   if (event.target.className !== "cell") {
