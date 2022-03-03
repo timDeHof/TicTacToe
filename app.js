@@ -212,18 +212,22 @@ ticTacToe.addEventListener("click", function (event) {
     gameState.move(gameState.currentPlayer, row, col);
     renderBoard();
     console.log(gameState.currentPlayer);
-    if (gameState.currentPlayer === gameState.player1) {
-      // would like to check if cell is empty before moving to next player
-      checkMoveValidation();
-      gameState.currentPlayer = gameState.player2;
-      checkBoard();
-    } else if (gameState.currentPlayer === gameState.player2) {
-      gameState.currentPlayer = gameState.player1;
-      checkBoard();
-    }
+    switchPlayer();
   }
 });
 
+// * switches players
+function switchPlayer() {
+  if (gameState.currentPlayer === gameState.player1) {
+    // would like to check if cell is empty before moving to next player
+    checkMoveValidation();
+    gameState.currentPlayer = gameState.player2;
+    checkBoard();
+  } else if (gameState.currentPlayer === gameState.player2) {
+    gameState.currentPlayer = gameState.player1;
+    checkBoard();
+  }
+}
 // * updates board with with playerPosition indexes
 function renderBoard() {
   for (let i = 0; i < gameState.board.length; i++) {
