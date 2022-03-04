@@ -233,7 +233,7 @@ function resetGame() {
 const ticTacToe = document.getElementById("tic-tac-toe");
 
 // * creates the play button on the board
-const playButton = document.createElement("button");
+let playButton = document.createElement("button");
 playButton.classList.add("PLAY");
 ticTacToe.appendChild(playButton);
 playButton.innerText = "PLAY";
@@ -320,10 +320,9 @@ function checkBoard() {
 
 // * Make them work together
 // * Listen to clicks to our play button
-// playButton.addEventListener("click"),
-//   function () {
-//     console.log("Play Me!");
-//   }; showing type error in dev tool
+playButton.addEventListener("click", function () {
+  console.log("Play Me!");
+}); // showing type error in dev tool
 
 // * Listen to clicks on our reset button
 resetButton.addEventListener("click", function () {
