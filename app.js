@@ -121,21 +121,91 @@ const gameState = {
       this.gameStatus = "Finished";
       winner.innerText = "user is the winner!";
     }
+
+    // * if computer wins
+    // across the top
+    if (
+      board[0][0] === "computer" &&
+      board[0][1] === "computer" &&
+      board[0][2] === "computer"
+    ) {
+      this.gameStatus = "Finished";
+      winner.innerText = `computer is the winner!`;
+    }
+
+    // across the middle
+    if (
+      board[1][0] === "computer" &&
+      board[1][1] === "computer" &&
+      board[1][2] === "computer"
+    ) {
+      this.gameStatus = "Finished";
+      winner.innerText = "computer is the winner!";
+    }
+
+    // across the bottom
+    if (
+      board[2][0] === "computer" &&
+      board[2][1] === "computer" &&
+      board[2][2] === "computer"
+    ) {
+      this.gameStatus = "Finished";
+      winner.innerText = "computer is the winner!";
+    }
+
+    // Going down the left side
+    if (
+      board[0][0] === "computer" &&
+      board[1][0] === "computer" &&
+      board[2][0] === "computer"
+    ) {
+      this.gameStatus = "Finished";
+      winner.innerText = "computer is the winner!";
+    }
+
+    // Going down the middle
+    if (
+      board[0][1] === "computer" &&
+      board[1][1] === "computer" &&
+      board[2][1] === "computer"
+    ) {
+      this.gameStatus = "Finished";
+      winner.innerText = "computer is the winner!";
+    }
+
+    // Going down the right
+    if (
+      board[0][2] === "computer" &&
+      board[1][2] === "computer" &&
+      board[2][2] === "computer"
+    ) {
+      this.gameStatus = "Finished";
+      winner.innerText = "computer is the winner!";
+    }
+
+    // diagonal across the board - top-left to bottom-right
+    if (
+      board[0][0] === "computer" &&
+      board[1][1] === "computer" &&
+      board[2][2] === "computer"
+    ) {
+      this.gameStatus = "Finished";
+      winner.innerText = "computer is the winner!";
+    }
+
+    // diagonal across the board - top-right to bottom-left
+    if (
+      board[0][2] === "computer" &&
+      board[1][1] === "computer" &&
+      board[2][0] === "computer"
+    ) {
+      this.gameStatus = "Finished";
+      winner.innerText = "computer is the winner!";
+    }
   },
 };
 
 // * write functions to manipulate gameState
-
-// function getUserName() {
-//   //player.name = prompt("What's your name?");
-//   //prompts user to enter their names and stores it in the player object name
-// }
-//getUserName();
-//console.log(player.name);
-/* function displayPlayersUserName(){
-     displays user's name under Player tag   
-    } */
-
 // function playerTurn() {
 //    Players take turns placing their marks in an empty space
 // }
