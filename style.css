@@ -31,6 +31,9 @@ h4 {
   font-size: large;
   display: none;
 }
+.target {
+  pointer-events: none;
+}
 .cell {
   width: 100px;
   height: 100px;

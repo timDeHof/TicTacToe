@@ -23,12 +23,15 @@ const gameState = {
     if (!this.board[rowNum][colNum]) {
       this.board[rowNum][colNum] = player;
     }
+
     console.log(this.board);
     return this.board;
   },
 
   clear: function () {
     let winner = document.getElementById("winner");
+    // let cell = document.getElementsByClassName("cell");
+    // cell.classList.remove("target");
     this.board = [
       [null, null, null],
       [null, null, null],
@@ -280,8 +283,11 @@ ticTacToe.addEventListener("click", function (event) {
     let row = event.target.id[0];
     let col = event.target.id[1];
     gameState.move(gameState.currentPlayer, row, col);
+    let cell = document.getElementsByClassName("cell")[0];
+    cell.classList.add("target");
+
     renderBoard();
-    console.log(gameState.currentPlayer);
+
     switchPlayer();
   }
 });
