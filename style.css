@@ -5,6 +5,7 @@ body {
   width: 100vw;
   height: 100vh;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: aqua;
 }
 
 #tic-tac-toe {
@@ -23,17 +24,25 @@ body {
   justify-items: center;
   align-items: center;
 }
+
 select {
   width: 50px;
+}
+
+h1{
+  color: white;
+  text-align: center;
 }
 
 h4 {
   font-size: large;
   display: none;
 }
+
 .target {
   pointer-events: none;
 }
+
 .cell {
   width: 100px;
   height: 100px;
