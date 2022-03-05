@@ -45,14 +45,18 @@ h4 {
   display: none;
 }
 
-.target {
-  pointer-events: none;
-}
-
 .cell {
   width: 100px;
   height: 100px;
   background-color: darkolivegreen;
+}
+
+.cell::before {
+  pointer-events: none;
+}
+
+.cel::after {
+  pointer-events: visible;
 }
 
 .cell:nth-child(3n + 2) {

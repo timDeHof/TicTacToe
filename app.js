@@ -30,6 +30,7 @@ const gameState = {
 
   clear: function () {
     let winner = document.getElementById("winner");
+    let playersField = document.querySelector(".playersField");
     // let cell = document.getElementsByClassName("cell");
     // cell.classList.remove("target");
     this.board = [
@@ -40,6 +41,7 @@ const gameState = {
     this.gameStatus = "playing";
     this.currentPlayer = "user";
     winner.innerText = "";
+    playersField.innerText = "";
   },
 
   winningCombinations: function (board) {
@@ -207,8 +209,34 @@ const gameState = {
     }
   },
 };
-
+let playersField = document.querySelector(".playersField");
 // * write functions to manipulate gameState
+let numberOfPlayers = document
+  .querySelector(".getNum")
+  .addEventListener("click", function () {
+    let playersNumber = Number(
+      document.querySelector("#numberOfPlayers").value
+    );
+    // when there is no input
+    if (!playersNumber) {
+      document.querySelector("#players").textContent =
+        "Please select a number!";
+      //when players is one
+    } else if (playersNumber === 1) {
+      document.querySelector("#players").textContent =
+        "Player one: user and player two: computer";
+      generatePlayBtn();
+      generateResetBtn();
+    } else {
+      document.querySelector("#players").textContent =
+        "Player one: userName1 and Player two: userName2";
+      generatePlayBtn();
+      generateResetBtn();
+    }
+
+    //console.log(playersNumber, typeof playersNumber);
+  });
+
 // function playerTurn() {
 //    Players take turns placing their marks in an empty space
 // }
@@ -236,16 +264,20 @@ function resetGame() {
 const ticTacToe = document.getElementById("tic-tac-toe");
 
 // * creates the play button on the board
-let playButton = document.createElement("button");
-playButton.classList.add("PLAY");
-ticTacToe.appendChild(playButton);
-playButton.innerText = "PLAY";
+function generatePlayBtn() {
+  let playButton = document.createElement("button");
+  playButton.classList.add("PLAY");
+  playersField.appendChild(playButton);
+  playButton.innerText = "PLAY";
+}
 
 // * creates the reset button on the board
-let resetButton = document.createElement("button");
-resetButton.classList.add("RESET");
-ticTacToe.appendChild(resetButton);
-resetButton.innerText = "RESET";
+function generateResetBtn() {
+  let resetButton = document.createElement("button");
+  resetButton.classList.add("RESET");
+  playersField.appendChild(resetButton);
+  resetButton.innerText = "RESET";
+}
 
 // * selector
 // users to select a number of players from selector
@@ -253,14 +285,14 @@ resetButton.innerText = "RESET";
 // if number of players is one then user
 // will play against computer otherwise
 
-const selectNumberOfPlayers = document.getElementsByTagName("select")[0];
-selectNumberOfPlayers.addEventListener(
-  "change",
-  function getNumberOfPlayers(event) {
-    numberOfPlayers = event.target.value;
-    console.log(numberOfPlayers);
-  }
-);
+// const selectNumberOfPlayers = document.getElementsByTagName("select")[0];
+// selectNumberOfPlayers.addEventListener(
+//   "change",
+//   function getNumberOfPlayers(event) {
+//     numberOfPlayers = event.target.value;
+//     console.log(numberOfPlayers);
+//   }
+// );
 // * Getting player 1 name
 function getPlayer1NameValue() {
   // Selecting the input element and get its value
@@ -283,11 +315,7 @@ ticTacToe.addEventListener("click", function (event) {
     let row = event.target.id[0];
     let col = event.target.id[1];
     gameState.move(gameState.currentPlayer, row, col);
-    let cell = document.getElementsByClassName("cell")[0];
-    cell.classList.add("target");
-
     renderBoard();
-
     switchPlayer();
   }
 });

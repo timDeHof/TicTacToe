@@ -9,23 +9,44 @@
     <script src="app.js" defer></script>
   </head>
   <body>
-    <h1>TIC TAC TOE</h1>
-    <div id = "directions">
-      <p>Directions: click on an empty space on the grid to start the game.</p>
-      <p>The first click will be assigned to Player one</p>
-      <p>The second click will be assigned to Player two or the computer by default</p>
-    </div>
-    <h2 id="winner"></h2>
+    <header>
+      <h1>TIC TAC TOE</h1>
+      <div id="directions">
+        <p>
+          Directions: click on an empty space on the grid to start the game.
+        </p>
+        <p>The first click will be assigned to Player one</p>
+        <p>
+          The second click will be assigned to Player two or the computer by
+          default
+        </p>
+      </div>
+      <h2 id="winner"></h2>
+    </header>
+    <main>
+      <section class="playersField">
+        <label for="numberOfPlayers">How many players (1 or 2)</label>
+        <input
+          type="number"
+          id="numberOfPlayers"
+          name="numberOfPlayers"
+          min="1"
+          max="2"
+        />
+        <button class="btn getNum">ok</button>
+        <h3 id="players"></h3>
+      </section>
+    </main>
 
-    <h3>How many players</h3>
+    <!-- <h3>How many players</h3>
     <select>
       <option value="1">1</option>
       <option value="2">2</option>
-    </select>
-    <input type="text" placeholder="Type" id="inputPlayer1Id" />
+    </select> -->
+    <!-- <input type="text" placeholder="Type" id="inputPlayer1Id" />
     <button type="button" onclick="getPlayer1NameValue();">PLAYER 1</button>
     <h4 id="warning">Warning: Please click an empty square on the board!</h4>
-    <h3 id="player1"></h3>
+    -->
     <div id="tic-tac-toe">
       <div class="cell" id="00"></div>
       <div class="cell" id="01"></div>
