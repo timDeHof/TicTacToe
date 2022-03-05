@@ -1,0 +1,34 @@
+If I could start over...
+
+I would start with a window that asks for the number of players based on the buttons "1" or "2".
+if(player selected "1" button){
+    ask for player's name  
+    assign player's name to player one
+    set player two to computer as default
+    ask player to click "play" button to start game
+}else{
+    ask for player's name  
+    assign player's name to player one
+    ask for other player's name 
+    assign other player's name to player two 
+    ask any player to click "play" button to start game
+}
+once "play" button is clicked then a grid would appear, waiting for the player one first move.
+
+After the first player's move, then the computer or player twos turn to pick a available empty square
+
+After each player's move, ...
+    the move should be check to see if its valid by comparing the move to array of empty squares.
+    if(player's move is valid){
+        update the board with the player's move added
+        check if the move creates a winning combination
+        if(winning combination is true){
+            stop updating the board
+            have an alert window appear saying "player "1 or 2" has won!"
+        }else{
+            continue the game
+        }
+    }else {
+        ask the player to try again
+    }
+
