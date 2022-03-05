@@ -24,12 +24,18 @@ body {
   justify-items: center;
   align-items: center;
 }
-
+#directions {
+  text-align: left;
+  text-overflow: clip;
+  margin: 2rem;
+  padding: auto;
+  font-size: 20px;
+}
 select {
   width: 50px;
 }
 
-h1{
+h1 {
   color: white;
   text-align: center;
 }
