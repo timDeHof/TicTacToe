@@ -214,14 +214,14 @@ const gameState = {
 // }
 
 /* function placeMarks(){
-    allows the player place a mark in an empty space on the board
-    } */
+  allows the player place a mark in an empty space on the board
+} */
 
 /* function checksMarks(){
-    check if mark is occupied by a player or is empty space
-    } */
+  check if mark is occupied by a player or is empty space
+} */
 /* function getPlayersMarkPosition(){
-    gets the mark position of the player and returns it to the boardPositions property array
+  gets the mark position of the player and returns it to the boardPositions property array
 } */
 
 function resetGame() {
@@ -278,16 +278,14 @@ function displayPlayer1Name(name) {
 // * Make cell change from null to "x" or "o"
 ticTacToe.addEventListener("click", function (event) {
   if (event.target.className !== "cell") {
-    // document.getElementById(".warning").style.visibility = "visible";
     return;
   } else {
-    // document.getElementById(".warning").style.visibility = "hidden";
     let row = event.target.id[0];
     let col = event.target.id[1];
-    gameState.move(gameState.currentPlayer, row, col);
-    // let cell = document.getElementsByClassName("cell")[0];
-    // cell.classList.add("target");
 
+    gameState.move(gameState.currentPlayer, row, col);
+    let currentPlayer = document.getElementById("currentPlayer");
+    currentPlayer.innerText = `Last Player played was ${gameState.currentPlayer}`;
     renderBoard();
 
     switchPlayer();
