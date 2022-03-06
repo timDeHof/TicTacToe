@@ -256,11 +256,11 @@ function resetGame() {
 // * Makes references to the one <div id="tic-tac-toe"></div> in the <body></body> tag
 const ticTacToe = document.getElementById("tic-tac-toe");
 
-// * creates the play button on the board
-let playButton = document.createElement("button");
-playButton.classList.add("PLAY");
-ticTacToe.appendChild(playButton);
-playButton.innerText = "PLAY";
+// // * creates the play button on the board
+// let playButton = document.createElement("button");
+// playButton.classList.add("PLAY");
+// ticTacToe.appendChild(playButton);
+// playButton.innerText = "PLAY";
 
 // * creates the reset button on the board
 let resetButton = document.createElement("button");
@@ -359,9 +359,9 @@ function checkBoard() {
 
 // * Make them work together
 // * Listen to clicks to our play button
-playButton.addEventListener("click", function () {
-  console.log("Play Me!");
-}); 
+// playButton.addEventListener("click", function () {
+//   console.log("Play Me!");
+// });
 
 // * Listen to clicks on our reset button
 resetButton.addEventListener("click", function () {
