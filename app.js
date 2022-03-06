@@ -310,7 +310,6 @@ ticTacToe.addEventListener("click", function (event) {
     renderBoard();
     //checkMoveValidation();
     checkBoard();
-
     switchPlayer();
   }
 });
