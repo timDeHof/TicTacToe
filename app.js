@@ -308,11 +308,22 @@ ticTacToe.addEventListener("click", function (event) {
     let currentPlayer = document.getElementById("currentPlayer");
     currentPlayer.innerText = `Last Player played was ${gameState.currentPlayer}`;
     renderBoard();
+
     //checkMoveValidation();
     checkBoard();
+
     switchPlayer();
   }
 });
+// * make the computer moves
+// function computerMoves() {
+//   if (gameState.currentPlayer === "computer") {
+//     let row = Math.trunc(Math.random() * 2 + 1);
+//     let col = Math.trunc(Math.random() * 2 + 1);
+//     gameState.move(gameState.currentPlayer, row, col);
+//     console.log(row, col);
+//   }
+// }
 
 // * switches players
 function switchPlayer() {
@@ -333,6 +344,7 @@ function renderBoard() {
       currentCell.innerText = currentEl;
     }
   }
+  //computerMoves();
 }
 
 // * checks if move was valid or not
@@ -352,7 +364,7 @@ function renderBoard() {
 function checkBoard() {
   // checks if board has a winner
   gameState.winningCombinations(gameState.board);
-  console.log({ gameState });
+  //console.log({ gameState });
 }
 // * reference to our board
 
@@ -364,6 +376,6 @@ function checkBoard() {
 
 // * Listen to clicks on our reset button
 resetButton.addEventListener("click", function () {
-  console.log("Reset me!");
+  //console.log("Reset me!");
   resetGame();
 });
