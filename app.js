@@ -44,85 +44,82 @@ const gameState = {
 
   winningCombinations: function (board) {
     let winner = document.getElementById("winner");
+    let user = this.player1;
 
     // across the top
-    if (
-      board[0][0] === "user" &&
-      board[0][1] === "user" &&
-      board[0][2] === "user"
-    ) {
+    if (board[0][0] === user && board[0][1] === user && board[0][2] === user) {
       this.gameStatus = "Finished";
-      winner.innerText = `user is the winner!`;
+      winner.innerText = `${user} is the winner!`;
     }
 
     // across the middle
     else if (
-      board[1][0] === "user" &&
-      board[1][1] === "user" &&
-      board[1][2] === "user"
+      board[1][0] === user &&
+      board[1][1] === user &&
+      board[1][2] === user
     ) {
       this.gameStatus = "Finished";
-      winner.innerText = "user is the winner!";
+      winner.innerText = `${user} is the winner!`;
     }
 
     // across the bottom
     else if (
-      board[2][0] === "user" &&
-      board[2][1] === "user" &&
-      board[2][2] === "user"
+      board[2][0] === user &&
+      board[2][1] === user &&
+      board[2][2] === user
     ) {
       this.gameStatus = "Finished";
-      winner.innerText = "user is the winner!";
+      winner.innerText = `${user} is the winner!`;
     }
 
     // Going down the left side
     else if (
-      board[0][0] === "user" &&
-      board[1][0] === "user" &&
-      board[2][0] === "user"
+      board[0][0] === user &&
+      board[1][0] === user &&
+      board[2][0] === user
     ) {
       this.gameStatus = "Finished";
-      winner.innerText = "user is the winner!";
+      winner.innerText = `${user} is the winner!`;
     }
 
     // Going down the middle
     else if (
-      board[0][1] === "user" &&
-      board[1][1] === "user" &&
-      board[2][1] === "user"
+      board[0][1] === user &&
+      board[1][1] === user &&
+      board[2][1] === user
     ) {
       this.gameStatus = "Finished";
-      winner.innerText = "user is the winner!";
+      winner.innerText = `${user} is the winner!`;
     }
 
     // Going down the right
     else if (
-      board[0][2] === "user" &&
-      board[1][2] === "user" &&
-      board[2][2] === "user"
+      board[0][2] === user &&
+      board[1][2] === user &&
+      board[2][2] === user
     ) {
       this.gameStatus = "Finished";
-      winner.innerText = "user is the winner!";
+      winner.innerText = `${user} is the winner!`;
     }
 
     // diagonal across the board - top-left to bottom-right
     else if (
-      board[0][0] === "user" &&
-      board[1][1] === "user" &&
-      board[2][2] === "user"
+      board[0][0] === user &&
+      board[1][1] === user &&
+      board[2][2] === user
     ) {
       this.gameStatus = "Finished";
-      winner.innerText = "user is the winner!";
+      winner.innerText = `${user} is the winner!`;
     }
 
     // diagonal across the board - top-right to bottom-left
     else if (
-      board[0][2] === "user" &&
-      board[1][1] === "user" &&
-      board[2][0] === "user"
+      board[0][2] === user &&
+      board[1][1] === user &&
+      board[2][0] === user
     ) {
       this.gameStatus = "Finished";
-      winner.innerText = "user is the winner!";
+      winner.innerText = `${user} is the winner!`;
     }
 
     // * if computer wins
@@ -268,7 +265,8 @@ selectNumberOfPlayers.addEventListener(
 function getPlayer1NameValue() {
   // Selecting the input element and get its value
   let inputVal = document.getElementById("inputPlayer1Id").value;
-  //gameState.player1 = inputVal;
+  gameState.player1 = inputVal;
+  gameState.currentPlayer = gameState.player1;
   // Displaying the value
   displayPlayer1Name(inputVal);
 }
@@ -287,8 +285,8 @@ ticTacToe.addEventListener("click", function (event) {
     let row = event.target.id[0];
     let col = event.target.id[1];
     gameState.move(gameState.currentPlayer, row, col);
-    let cell = document.getElementsByClassName("cell")[0];
-    cell.classList.add("target");
+    // let cell = document.getElementsByClassName("cell")[0];
+    // cell.classList.add("target");
 
     renderBoard();
 
