@@ -30,6 +30,10 @@ const gameState = {
 
   clear: function () {
     let winner = document.getElementById("winner");
+    let currentPlayer = document.getElementById("currentPlayer");
+    let playersSetup = document.getElementById("playersSetup");
+    let inputPlayer1Id = document.getElementById("inputPlayer1Id");
+    //let warningMessage = document.getElementById("warningMessage");
     // let cell = document.getElementsByClassName("cell");
     // cell.classList.remove("target");
     this.board = [
@@ -39,7 +43,12 @@ const gameState = {
     ];
     this.gameStatus = "playing";
     this.currentPlayer = "user";
+    this.player1 = "";
     winner.innerText = "";
+    currentPlayer.innerText = "";
+    playersSetup.innerText = "";
+    inputPlayer1Id.value = " ";
+    //warningMessage.style.display = "none";
   },
 
   winningCombinations: function (board) {
@@ -201,7 +210,19 @@ const gameState = {
     ) {
       this.gameStatus = "Finished";
       winner.innerText = "computer is the winner!";
-    } else {
+    }
+    // when its a draw
+    else if (
+      (board[0][0] === user || board[0][0] === "computer") &&
+      (board[0][1] === user || board[0][1] === "computer") &&
+      (board[0][2] === user || board[0][2] === "computer") &&
+      (board[1][0] === user || board[1][0] === "computer") &&
+      (board[1][1] === user || board[1][1] === "computer") &&
+      (board[1][2] === user || board[1][2] === "computer") &&
+      (board[2][0] === user || board[2][0] === "computer") &&
+      (board[2][1] === user || board[2][1] === "computer") &&
+      (board[2][2] === user || board[2][2] === "computer")
+    ) {
       this.gameStatus = "Finished";
       winner.innerText = "its a Draw!";
     }
@@ -272,8 +293,8 @@ function getPlayer1NameValue() {
 }
 
 function displayPlayer1Name(name) {
-  let player1 = document.getElementById("player1");
-  player1.innerText = `Player 1: ${name}  Player 2: Computer`;
+  let playersSetup = document.getElementById("playersSetup");
+  playersSetup.innerText = `Player 1: ${name}  Player 2: Computer`;
 }
 // * Make cell change from null to "x" or "o"
 ticTacToe.addEventListener("click", function (event) {
@@ -287,6 +308,8 @@ ticTacToe.addEventListener("click", function (event) {
     let currentPlayer = document.getElementById("currentPlayer");
     currentPlayer.innerText = `Last Player played was ${gameState.currentPlayer}`;
     renderBoard();
+    //checkMoveValidation();
+    checkBoard();
 
     switchPlayer();
   }
@@ -296,12 +319,10 @@ ticTacToe.addEventListener("click", function (event) {
 function switchPlayer() {
   if (gameState.currentPlayer === gameState.player1) {
     // would like to check if cell is empty before moving to next player
-    checkMoveValidation();
     gameState.currentPlayer = gameState.player2;
-    checkBoard();
   } else if (gameState.currentPlayer === gameState.player2) {
     gameState.currentPlayer = gameState.player1;
-    checkBoard();
+    //checkBoard();
   }
 }
 // * updates board with with playerPosition indexes
@@ -316,7 +337,19 @@ function renderBoard() {
 }
 
 // * checks if move was valid or not
-function checkMoveValidation() {}
+// function checkMoveValidation(move) {
+//   for (let i = 0; i < gameState.board.length; i++) {
+//     for (let k = 0; k < gameState.board[i].length; k++) {
+//       let currentEl = gameState.board[i][k];
+//       if (currentEl.value === null) {
+//         return;
+//       } else {
+//         // let warningMessage = document.getElementById("warningMessage");
+//         // warningMessage.style.display = "visible";
+//       }
+//     }
+//   }
+// }
 function checkBoard() {
   // checks if board has a winner
   gameState.winningCombinations(gameState.board);
@@ -328,7 +361,7 @@ function checkBoard() {
 // * Listen to clicks to our play button
 playButton.addEventListener("click", function () {
   console.log("Play Me!");
-}); // showing type error in dev tool
+}); 
 
 // * Listen to clicks on our reset button
 resetButton.addEventListener("click", function () {

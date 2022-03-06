@@ -40,13 +40,9 @@ h1 {
   text-align: center;
 }
 
-h4 {
+.warningMessage {
   font-size: large;
   display: none;
-}
-
-.target {
-  pointer-events: none;
 }
 
 .cell {
