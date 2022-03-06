@@ -56,7 +56,7 @@ const gameState = {
     }
 
     // across the middle
-    if (
+    else if (
       board[1][0] === "user" &&
       board[1][1] === "user" &&
       board[1][2] === "user"
@@ -66,7 +66,7 @@ const gameState = {
     }
 
     // across the bottom
-    if (
+    else if (
       board[2][0] === "user" &&
       board[2][1] === "user" &&
       board[2][2] === "user"
@@ -76,7 +76,7 @@ const gameState = {
     }
 
     // Going down the left side
-    if (
+    else if (
       board[0][0] === "user" &&
       board[1][0] === "user" &&
       board[2][0] === "user"
@@ -86,7 +86,7 @@ const gameState = {
     }
 
     // Going down the middle
-    if (
+    else if (
       board[0][1] === "user" &&
       board[1][1] === "user" &&
       board[2][1] === "user"
@@ -96,7 +96,7 @@ const gameState = {
     }
 
     // Going down the right
-    if (
+    else if (
       board[0][2] === "user" &&
       board[1][2] === "user" &&
       board[2][2] === "user"
@@ -106,7 +106,7 @@ const gameState = {
     }
 
     // diagonal across the board - top-left to bottom-right
-    if (
+    else if (
       board[0][0] === "user" &&
       board[1][1] === "user" &&
       board[2][2] === "user"
@@ -116,7 +116,7 @@ const gameState = {
     }
 
     // diagonal across the board - top-right to bottom-left
-    if (
+    else if (
       board[0][2] === "user" &&
       board[1][1] === "user" &&
       board[2][0] === "user"
@@ -127,7 +127,7 @@ const gameState = {
 
     // * if computer wins
     // across the top
-    if (
+    else if (
       board[0][0] === "computer" &&
       board[0][1] === "computer" &&
       board[0][2] === "computer"
@@ -137,7 +137,7 @@ const gameState = {
     }
 
     // across the middle
-    if (
+    else if (
       board[1][0] === "computer" &&
       board[1][1] === "computer" &&
       board[1][2] === "computer"
@@ -147,7 +147,7 @@ const gameState = {
     }
 
     // across the bottom
-    if (
+    else if (
       board[2][0] === "computer" &&
       board[2][1] === "computer" &&
       board[2][2] === "computer"
@@ -157,7 +157,7 @@ const gameState = {
     }
 
     // Going down the left side
-    if (
+    else if (
       board[0][0] === "computer" &&
       board[1][0] === "computer" &&
       board[2][0] === "computer"
@@ -167,7 +167,7 @@ const gameState = {
     }
 
     // Going down the middle
-    if (
+    else if (
       board[0][1] === "computer" &&
       board[1][1] === "computer" &&
       board[2][1] === "computer"
@@ -177,7 +177,7 @@ const gameState = {
     }
 
     // Going down the right
-    if (
+    else if (
       board[0][2] === "computer" &&
       board[1][2] === "computer" &&
       board[2][2] === "computer"
@@ -187,7 +187,7 @@ const gameState = {
     }
 
     // diagonal across the board - top-left to bottom-right
-    if (
+    else if (
       board[0][0] === "computer" &&
       board[1][1] === "computer" &&
       board[2][2] === "computer"
@@ -197,13 +197,16 @@ const gameState = {
     }
 
     // diagonal across the board - top-right to bottom-left
-    if (
+    else if (
       board[0][2] === "computer" &&
       board[1][1] === "computer" &&
       board[2][0] === "computer"
     ) {
       this.gameStatus = "Finished";
       winner.innerText = "computer is the winner!";
+    } else {
+      this.gameStatus = "Finished";
+      winner.innerText = "its a Draw!";
     }
   },
 };
@@ -265,13 +268,14 @@ selectNumberOfPlayers.addEventListener(
 function getPlayer1NameValue() {
   // Selecting the input element and get its value
   let inputVal = document.getElementById("inputPlayer1Id").value;
+  //gameState.player1 = inputVal;
   // Displaying the value
   displayPlayer1Name(inputVal);
 }
 
 function displayPlayer1Name(name) {
   let player1 = document.getElementById("player1");
-  player1.innerText = `Player 1: ${name}`;
+  player1.innerText = `Player 1: ${name}  Player 2: Computer`;
 }
 // * Make cell change from null to "x" or "o"
 ticTacToe.addEventListener("click", function (event) {
